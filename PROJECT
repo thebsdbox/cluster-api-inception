@@ -1,0 +1,10 @@
+version: "2"
+domain: cluster.x-k8s.io
+repo: cluster-api-inception
+resources:
+- group: infrastructure
+  version: v1alpha1
+  kind: InceptionMachine
+- group: infrastructure
+  version: v1alpha1
+  kind: InceptionCluster
