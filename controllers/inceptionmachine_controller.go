@@ -112,6 +112,7 @@ func (r *InceptionMachineReconciler) Reconcile(req ctrl.Request) (_ ctrl.Result,
 			}
 		}
 	}()
+
 	// Handle deleted clusters
 	if !inceptionMachine.DeletionTimestamp.IsZero() {
 		return r.reconcileMachineDelete(logger, machine, inceptionMachine, cluster, inceptionCluster)
@@ -127,6 +128,9 @@ func (r *InceptionMachineReconciler) reconcileMachine(logger logr.Logger, machin
 	if !util.Contains(inceptionMachine.Finalizers, infrav1.MachineFinalizer) {
 		inceptionMachine.Finalizers = append(inceptionMachine.Finalizers, infrav1.MachineFinalizer)
 	}
+
+	// Immeditaly give it the details it needs
+	providerID := "inception:////inception"
 
 	// if the machine is already provisioned, return
 	if inceptionMachine.Spec.ProviderID != nil {
@@ -153,7 +157,6 @@ func (r *InceptionMachineReconciler) reconcileMachine(logger logr.Logger, machin
 	// // if the machine is a control plane added, update the load balancer configuration
 	// if util.IsControlPlaneMachine(machine) {}
 
-	providerID := "inception:////inception"
 	inceptionMachine.Spec.ProviderID = &providerID
 	// Mark the inceptionMachine ready
 	inceptionMachine.Status.Ready = true
