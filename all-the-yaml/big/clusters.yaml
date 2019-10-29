@@ -1,0 +1,89 @@
+apiVersion: cluster.x-k8s.io/v1alpha2
+kind: Cluster
+metadata:
+  name: cluster-seattle
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks: ["192.168.0.0/16"]
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+    kind: InceptionCluster
+    name: cluster-seattle
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+kind: InceptionCluster
+metadata:
+  name: cluster-seattle
+---
+apiVersion: cluster.x-k8s.io/v1alpha2
+kind: Cluster
+metadata:
+  name: cluster-portland
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks: ["192.168.0.0/16"]
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+    kind: InceptionCluster
+    name: cluster-portland
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+kind: InceptionCluster
+metadata:
+  name: cluster-portland
+---
+apiVersion: cluster.x-k8s.io/v1alpha2
+kind: Cluster
+metadata:
+  name: cluster-san-francisco
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks: ["192.168.0.0/16"]
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+    kind: InceptionCluster
+    name: cluster-san-francisco
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+kind: InceptionCluster
+metadata:
+  name: cluster-san-francisco
+---
+apiVersion: cluster.x-k8s.io/v1alpha2
+kind: Cluster
+metadata:
+  name: cluster-sheffield
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks: ["192.168.0.0/16"]
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+    kind: InceptionCluster
+    name: cluster-sheffield
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+kind: InceptionCluster
+metadata:
+  name: cluster-sheffield
+---
+apiVersion: cluster.x-k8s.io/v1alpha2
+kind: Cluster
+metadata:
+  name: cluster-new-york
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks: ["192.168.0.0/16"]
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+    kind: InceptionCluster
+    name: cluster-new-york
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+kind: InceptionCluster
+metadata:
+  name: cluster-new-york

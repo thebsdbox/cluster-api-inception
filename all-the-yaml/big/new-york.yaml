@@ -1,0 +1,28 @@
+kind: MachineDeployment
+apiVersion: cluster.x-k8s.io/v1alpha2
+metadata:
+  name: deployment-new-york
+  namespace: default
+  labels:
+    cluster.x-k8s.io/cluster-name: cluster-new-york
+    nodepool: nodepool-0
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      cluster.x-k8s.io/cluster-name: cluster-new-york
+      nodepool: nodepool-0
+  template:
+    metadata:
+      labels:
+        cluster.x-k8s.io/cluster-name: cluster-new-york
+        nodepool: nodepool-0
+    spec:
+      version: "v1.15.3"
+      bootstrap:
+        data: ""  
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+        kind: InceptionMachine
+        name: imachinetemplate
+        namespace: default
